@@ -1,6 +1,6 @@
-# Carvelo
+# VeloCars
 
-Carvelo is a full-featured car shop management platform designed to streamline vehicle sales, rentals, and the entire maintenance workflow for used cars. It provides an intuitive interface for administrators to manage their inventory and a seamless experience for customers to browse, buy, and rent vehicles.
+VeloCars is a full-featured car shop management platform designed to streamline vehicle sales, rentals, and the entire maintenance workflow for used cars. It provides an intuitive interface for administrators to manage their inventory and a seamless experience for customers to browse, buy, and rent vehicles.
 
 A key feature is the integrated repair management system. When used cars are registered, the system automatically notifies the appropriate personnel about necessary fixes, ensuring every vehicle is in prime condition before being listed for sale or rent.
 
