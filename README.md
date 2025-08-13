@@ -18,7 +18,7 @@ A key feature is the integrated repair management system. When used cars are reg
 
 ### Technologies Used
 
-*(You can fill in this section with the specific languages and frameworks you're using. Here is a common example based on our previous conversation.)*
+
 
 - **Frontend:** Vue.js, Tailwind CSS
 - **Backend:** Laravel
@@ -37,7 +37,7 @@ All rights reserved. Unauthorized use, copying, or distribution of this project,
 
 1.  Clone the repository:
     ```bash
-    git clone [https://github.com/your-username/carvelo.git](https://github.com/your-username/carvelo.git)
+    git clone [https://github.com/TitanDevX/VeloCars.git](https://github.com/TitanDevX/VeloCars.git)
     ```
 2.  Navigate to the project directory:
     ```bash
@@ -64,6 +64,4 @@ All rights reserved. Unauthorized use, copying, or distribution of this project,
 
 ---
 
-### License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
