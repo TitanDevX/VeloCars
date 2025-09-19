@@ -64,4 +64,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function soldCars(){
+        return $this->hasMany(Car::class, "sold_to_user_id");
+    }
 }

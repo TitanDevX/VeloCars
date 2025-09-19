@@ -1,0 +1,52 @@
+[
+    {
+        "title": "Engine Overheating",
+        "priority": "High",
+        "details": "The engine temperature rises quickly and the warning light comes on after 10 minutes of driving."
+    },
+    {
+        "title": "Brake Noise",
+        "priority": "Medium",
+        "details": "Squealing noise is heard when applying the brakes at low speeds."
+    },
+    {
+        "title": "Transmission Slipping",
+        "priority": "High",
+        "details": "Transmission slips when shifting from second to third gear."
+    },
+    {
+        "title": "AC Not Cooling",
+        "priority": "Low",
+        "details": "Air conditioning blows warm air even after 15 minutes of operation."
+    },
+    {
+        "title": "Battery Drains Fast",
+        "priority": "Medium",
+        "details": "Car battery loses charge overnight even when all devices are turned off."
+    },
+    {
+        "title": "Suspension Noise",
+        "priority": "Low",
+        "details": "Rattling noise from the suspension when driving over bumps."
+    },
+    {
+        "title": "Power Steering Failure",
+        "priority": "High",
+        "details": "Steering becomes very hard to turn, especially at low speeds."
+    },
+    {
+        "title": "Headlight Flicker",
+        "priority": "Low",
+        "details": "Headlights occasionally flicker while driving at night."
+    },
+    {
+        "title": "Fuel Smell Inside Car",
+        "priority": "Medium",
+        "details": "Noticeable fuel smell inside the car after refueling."
+    },
+    {
+        "title": "Door Lock Malfunction",
+        "priority": "Low",
+        "details": "Driver's side door lock does not respond to key fob commands."
+    }
+]
