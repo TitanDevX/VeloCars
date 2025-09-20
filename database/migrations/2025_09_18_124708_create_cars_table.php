@@ -7,8 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -17,21 +16,23 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->softDeletes();
-            $table->string("make", 10);
+            $table->string("make", 20);
             $table->string("model", 20);
             $table->integer("year");
-            $table->string("color",10);
+            $table->string("color", 20);
             $table->bigInteger("mileage");
-            $table->string('vin',17)->nullable();
-            $table->integer('buy_price');
-            $table->integer('rent_price'); # Per day
+            $table->string('vin', 17)->nullable();
+            $table->integer('buy_price')->default(0);
+            $table->integer('rent_daily_rate')->default(0);
+            $table->integer('rent_weekly_rate')->default(0);
+            $table->integer('min_rental_days')->default(1);
             $table->char('type')->default('p'); # p = patrol, e = electric, h = hyprid.
             // $table->foreignIdFor(User::class,'seller')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             // $table->boolean('seller_is_owner')->default(true);
             $table->boolean('used')->default(true);
-            $table->boolean('available_for_rent')->default(false);
+            $table->boolean('for_rent')->default(false);
             $table->foreignIdFor(Branch::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignIdFor(User::class,"sold_to_user_id")->nullable();
+            $table->foreignIdFor(User::class, "sold_to_user_id")->nullable();
             $table->timestamps();
         });
     }

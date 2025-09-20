@@ -17,7 +17,7 @@ class CarFactory extends Factory
      */
     public function definition(): array
     {
-       static $cars = null;
+        static $cars = null;
         if ($cars === null) {
             $jsonPath = storage_path('app\public\car_samples.json');
             $cars = json_decode(File::get($jsonPath), true);
@@ -26,17 +26,20 @@ class CarFactory extends Factory
         $sample = $this->faker->randomElement($cars);
 
         return [
-            'make'                  => $sample['make'],
-            'model'                 => $sample['model'],
-            'year'                  => $sample['year'],
-            'color'                 => $sample['color'],
-            'mileage'               => $sample['mileage'],
-            'vin'                   => $sample['vin'],
-            'buy_price'             => $sample['buy_price'],
-            'rent_price'            => $sample['rent_price'],
-            'type'                  => $sample['type'],
-            'used'                  => $sample['used'],
-            'available_for_rent'    => $sample['available_for_rent'],
+            'make' => $sample['make'],
+            'model' => $sample['model'],
+            'year' => $sample['year'],
+            'color' => $sample['color'],
+            'mileage' => $sample['mileage'],
+            'vin' => $sample['vin'],
+            'buy_price' => $sample['buy_price'],
+            'rent_daily_rate' => $sample['rent_price'],
+            'rent_weekly_rate' => $sample['rent_price'] * 5,
+            'min_rental_days' => $this->faker->numberBetween(1,4),
+
+            'type' => $sample['type'],
+            'used' => $sample['used'],
+            'for_rent' => $sample['for_rent'],
         ];
     }
 }

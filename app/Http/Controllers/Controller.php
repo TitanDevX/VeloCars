@@ -4,8 +4,20 @@ namespace App\Http\Controllers;
 
 abstract class Controller
 {
-     protected function res(mixed $data = [], string $message = 'success', int $code = 200)
+     protected function res(mixed $data = [], string $message = 'success', int $code = 200, $success = true, $errors = [], $errorCode = null)
     {
-        return response()->json(['status' => true, 'message' => $message, 'data' => $data], $code);  
+        $arr = ['success' => $success, 'message' => $message];
+        if(sizeof($data) != 0){
+            $arr = array_merge($arr,$data);
+        }
+        if(sizeof($errors) != 0){
+            $arr = array_merge($arr,$errors);
+        }
+        if($errorCode){
+            $arr = array_merge($arr,['code' => $errorCode]);
+        }
+
+
+        return response()->json($arr, $code);  
     }
 }
