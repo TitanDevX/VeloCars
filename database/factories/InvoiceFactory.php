@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\InvoiceStateEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,8 @@ class InvoiceFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'amount' => $this->faker->numberBetween(100,1000000),
+            'state' => InvoiceStateEnum::fromName($this->faker->randomElement(['WAITING','OVERDUE','PAID'])),
         ];
     }
 }

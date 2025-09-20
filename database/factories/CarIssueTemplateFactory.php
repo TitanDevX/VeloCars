@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\CarIssuePriorityEnum;
 use File;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,7 +20,7 @@ class CarIssueTemplateFactory extends Factory
     {
         static $issues = null;
         if ($issues === null) {
-            $jsonPath = storage_path('public/car_issues_samples.json');
+            $jsonPath = storage_path('app\public\car_issues_samples.json');
             $issues = json_decode(File::get($jsonPath), true);
         }
 
@@ -28,7 +29,7 @@ class CarIssueTemplateFactory extends Factory
 
         return [
             'title'    => $sample['title'],
-            'priority' => $sample['priority'],
+            'priority' => CarIssuePriorityEnum::fromName($sample['priority']),
             'details'  => $sample['details'],
         ];
     }

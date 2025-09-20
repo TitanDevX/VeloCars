@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\InterestTypeEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -21,7 +22,8 @@ class InstallmentPlanFactory extends Factory
 
             'months' => $this->faker->numberBetween(12,60),
             'interest' => $this->faker->randomFloat(1,0.1,1),
-            'interest_type' => array_rand(['PER_YEAR_PERCENT','PER_YEAR_AMOUNT','FIXED_PERCENT','FIXED_AMOUNT'])
+            'interest_type' => InterestTypeEnum::fromName($this->faker->randomElement(
+                ['PER_YEAR_PERCENT','PER_YEAR_AMOUNT','FIXED_PERCENT','FIXED_AMOUNT']))
         ];
     }
 }

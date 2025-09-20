@@ -19,7 +19,7 @@ class CarDetailFactory extends Factory
     {
          static $cars = null;
         if ($cars === null) {
-            $jsonPath = storage_path('public/car_details_samples.json');
+            $jsonPath = storage_path('app\public\car_details_samples.json');
             $cars = json_decode(File::get($jsonPath), true);
         }
 

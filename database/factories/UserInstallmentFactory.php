@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enums\InstallmentStateEnum;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,9 @@ class UserInstallmentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+        
+            'next_invoice_date' => $this->faker->dateTime(),
+            'state' => InstallmentStateEnum::fromName( $this->faker->randomElement(['WAITING','ACTIVE','DEFAULT']) )
         ];
     }
 }

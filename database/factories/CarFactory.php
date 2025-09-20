@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use File;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,16 +17,26 @@ class CarFactory extends Factory
      */
     public function definition(): array
     {
+       static $cars = null;
+        if ($cars === null) {
+            $jsonPath = storage_path('app\public\car_samples.json');
+            $cars = json_decode(File::get($jsonPath), true);
+        }
+
+        $sample = $this->faker->randomElement($cars);
+
         return [
-            'make' => 'Marcedes',
-            'model' => 'E300',
-            'year' => 2025,
-            'color' => 'red',
-            'mileage' => 5000,
-            'buy_price' => 50000,
-            'type' => 'p',
-            'used' => false,
-    
+            'make'                  => $sample['make'],
+            'model'                 => $sample['model'],
+            'year'                  => $sample['year'],
+            'color'                 => $sample['color'],
+            'mileage'               => $sample['mileage'],
+            'vin'                   => $sample['vin'],
+            'buy_price'             => $sample['buy_price'],
+            'rent_price'            => $sample['rent_price'],
+            'type'                  => $sample['type'],
+            'used'                  => $sample['used'],
+            'available_for_rent'    => $sample['available_for_rent'],
         ];
     }
 }
