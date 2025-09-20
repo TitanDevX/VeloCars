@@ -37,7 +37,8 @@ class CarListNotification extends Notification
     {
         return (new MailMessage)
             ->subject('🚗 New Car Listed: ' . $this->car->make . ' ' . $this->car->model)
-            ->markdown('emails.car-list');
+            ->markdown('emails.car-list')
+            ->attach($this->car->getFirstMedia('thumbnail')->getFullUrl());
     }
 
     /**
