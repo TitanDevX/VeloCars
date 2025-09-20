@@ -9,6 +9,8 @@ enum UserNotifSubEnum: int
     case SELL = 3;
     case DISCOUNT = 4;
 
+    case NEW_BRANCH = 5;
+
 
     public static function fromName($name)
     {

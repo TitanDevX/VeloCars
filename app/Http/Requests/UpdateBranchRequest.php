@@ -11,7 +11,7 @@ class UpdateBranchRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,14 @@ class UpdateBranchRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+       return [
+            'state' => ['string'],
+            'city' => ['string'],
+            'street' => ['string'],
+            'address' => ['string'],
+            'long' => ['decimal:0,8'],
+            'lat' => ['decimal:0,8'],
+            
         ];
     }
 }
