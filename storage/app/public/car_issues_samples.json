@@ -1,52 +1,52 @@
 [
     {
         "title": "Engine Overheating",
-        "priority": "High",
+        "priority": "HIGH",
         "details": "The engine temperature rises quickly and the warning light comes on after 10 minutes of driving."
     },
     {
         "title": "Brake Noise",
-        "priority": "Medium",
-        "details": "Squealing noise is heard when applying the brakes at low speeds."
+        "priority": "NORMAL",
+        "details": "Squealing noise is heard when applying the brakes at LOW speeds."
     },
     {
         "title": "Transmission Slipping",
-        "priority": "High",
+        "priority": "HIGH",
         "details": "Transmission slips when shifting from second to third gear."
     },
     {
         "title": "AC Not Cooling",
-        "priority": "Low",
+        "priority": "LOW",
         "details": "Air conditioning blows warm air even after 15 minutes of operation."
     },
     {
         "title": "Battery Drains Fast",
-        "priority": "Medium",
+        "priority": "NORMAL",
         "details": "Car battery loses charge overnight even when all devices are turned off."
     },
     {
         "title": "Suspension Noise",
-        "priority": "Low",
+        "priority": "LOW",
         "details": "Rattling noise from the suspension when driving over bumps."
     },
     {
         "title": "Power Steering Failure",
-        "priority": "High",
-        "details": "Steering becomes very hard to turn, especially at low speeds."
+        "priority": "HIGH",
+        "details": "Steering becomes very hard to turn, especially at LOW speeds."
     },
     {
         "title": "Headlight Flicker",
-        "priority": "Low",
+        "priority": "LOW",
         "details": "Headlights occasionally flicker while driving at night."
     },
     {
         "title": "Fuel Smell Inside Car",
-        "priority": "Medium",
+        "priority": "NORMAL",
         "details": "Noticeable fuel smell inside the car after refueling."
     },
     {
         "title": "Door Lock Malfunction",
-        "priority": "Low",
+        "priority": "LOW",
         "details": "Driver's side door lock does not respond to key fob commands."
     }
 ]

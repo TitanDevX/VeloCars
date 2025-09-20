@@ -16,7 +16,7 @@ class CarService
             $cars = $this->addQueryEqualParamter($cars, $data, 'model');
             $cars = $this->addQueryEqualParamter($cars, $data, 'used');
             $cars = $this->addQueryMinMaxParamter($cars, $data, 'year');
-            $cars = $this->addQueryMinMaxParamter($cars, $data, 'price');
+            $cars = $this->addQueryMinMaxParamter($cars, $data, 'buy_price', dataName: 'price');
             $cars = $this->addQueryMinMaxParamter($cars, $data, 'mileage');
             $cars = $this->addQueryEqualParamter($cars, $data, 'type');
             $cars = $this->addQueryEqualParamter($cars, $data, dataName: 'rent', dbName: 'available_for_rent');
@@ -29,6 +29,15 @@ class CarService
                   return $cars->get();
             }
 
+      }
+
+      public function createCar($data)
+      {
+
+
+            $car = Car::create($data);
+            
+            return $car;
       }
       private function addQueryEqualParamter(Builder $oquery, array $data, string $param = '', string $dataName = null, string $dbName = null)
       {
@@ -43,12 +52,14 @@ class CarService
 
             });
       }
-      private function addQueryMinMaxParamter(Builder $oquery, array $data, string $param)
+      private function addQueryMinMaxParamter(Builder $oquery, array $data, string $param, string $dataName = null, string $dbName = null)
       {
-            return $oquery->when(isset($data["{$param}Min"]), function ($query) use ($data, $param) {
-                  return $query->where($param, '>=', $data["{$param}Min"]);
-            })->when(isset($data["{$param}Max"]), function ($query) use ($data, $param) {
-                  return $query->where($param, '<=', $data["{$param}Max"]);
+            $dataName = $dataName ?: $param;
+            $dbName = $dbName ?: $param;
+            return $oquery->when(isset($data["{$dataName}Min"]), function ($query) use ($data, $dataName, $dbName) {
+                  return $query->where($dbName, '>=', $data["{$dataName}Min"]);
+            })->when(isset($data["{$dataName}Max"]), function ($query) use ($data, $dataName, $dbName) {
+                  return $query->where($dbName, '<=', $data["{$dataName}Max"]);
             });
       }
 }

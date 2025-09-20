@@ -18,7 +18,7 @@ class UserInstallmentResource extends JsonResource
             'id' => $this->id,
             'plan' => $this->plan,
             'car' => CarResource::make($this->whenLoaded('car')),
-            'user' => UserResource::make($this->whenLoaded('customer')),
+            'user' => UserResource::make($this->whenLoaded('user')),
             'next_invoice_date' => $this->next_invoice_date,
             'state' => $this->state
         ];

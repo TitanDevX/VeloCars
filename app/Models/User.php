@@ -68,4 +68,8 @@ class User extends Authenticatable
     public function soldCars(){
         return $this->hasMany(Car::class, "sold_to_user_id");
     }
+
+    public function notificationSubscriptions(){
+        return $this->hasMany(UserNoficationSubscription::class);
+    }
 }

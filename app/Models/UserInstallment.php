@@ -22,11 +22,15 @@ class UserInstallment extends Model
     {
         return $this->belongsTo(InstallmentPlan::class);
     }
+    public function installmentPlan()
+    {
+        return $this->belongsTo(InstallmentPlan::class);
+    }
     public function car()
     {
         return $this->belongsTo(Car::class);
     }
-    public function customer()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

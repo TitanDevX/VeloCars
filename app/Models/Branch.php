@@ -17,4 +17,7 @@ class Branch extends Model
         return $this->hasMany(Car::class);
     }
 
+    public function quickAddress(){
+        return $this->state . ', ' . $this->city . ', ' . $this->street . ', ' . $this->address;
+    }
 }

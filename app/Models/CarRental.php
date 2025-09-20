@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\RentalStateEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -12,6 +13,10 @@ class CarRental extends Model
       use HasFactory, SoftDeletes;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    protected $casts = [
+        'state' => RentalStateEnum::class,
+    ];
 
     public function car(){
         return $this->belongsTo(Car::class);

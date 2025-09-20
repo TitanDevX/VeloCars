@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Car::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->integer('days');
             $table->integer('insurance');
+            $table->string('state');
             // $table->float('mileage_limit_per_day'); # 0 => no limit.
             // $table->char('mileage_unit')->default('k');
             $table->timestamps();

@@ -1,30 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\api;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\CarResource;
-use App\Services\CarService;
+use App\Services\UserNotificationSubscriptionService;
 use Illuminate\Http\Request;
 
-class CarController extends Controller
+class UserNotificationSubscriptionController extends Controller
 {
 
-    public function __construct(protected CarService $carService){}
+    public function __construct(protected UserNotificationSubscriptionService $userNotificationSubscriptionService){}
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $cars = $this->carService->all(request()->all(),['details', 'soldTo']);
-    
-       return $this->res(CarResource::collection($cars));
-    }
- public function search()
-    {
-       $cars = $this->carService->all(request()->all(),['details', 'soldTo']);
-    
-       return $this->res(CarResource::collection($cars));
+        //
     }
 
     /**
