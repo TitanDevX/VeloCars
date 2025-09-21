@@ -33,6 +33,7 @@ return new class extends Migration {
             $table->boolean('for_rent')->default(false);
             $table->foreignIdFor(Branch::class)->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignIdFor(User::class, "sold_to_user_id")->nullable();
+            $table->boolean('listed')->default(false);
             $table->timestamps();
         });
     }
