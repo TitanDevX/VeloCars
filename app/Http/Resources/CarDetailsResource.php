@@ -16,7 +16,7 @@ class CarDetailsResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'car' => CarResource::make($this->whenLoaded('car')),
+            'car_id' => $this->car_id,
             'engine_type' => $this->engine_type,
             'horse_power' => $this->horse_power,
             'drivetrain' => $this->drivetrain,
