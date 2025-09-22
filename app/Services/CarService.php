@@ -11,9 +11,10 @@ use function Pest\Laravel\instance;
 
 class CarService
 {
-      public function __construct(protected UserNotificationSubscriptionService $userNotificationSubscriptionService,
-      protected HelperService $helperService)
-      {
+      public function __construct(
+            protected UserNotificationSubscriptionService $userNotificationSubscriptionService,
+            protected HelperService $helperService
+      ) {
 
       }
       public function all($data = [], $withes = [], $paginated = true)
@@ -30,6 +31,10 @@ class CarService
             $cars = $this->helperService->addQueryEqualParamter($cars, $data, 'type');
             $cars = $this->helperService->addQueryEqualParamter($cars, $data, dataName: 'rent', dbName: 'for_rent');
             $cars = $this->helperService->addQueryEqualParamter($cars, $data, 'color');
+
+            if (!isset($data['withNotListed'])) {
+                  $cars = $cars->where('listed', true);
+            }
 
             $cars = $cars->with($withes)->latest();
             if ($paginated) {
@@ -81,5 +86,5 @@ class CarService
 
 
       }
-    
+
 }

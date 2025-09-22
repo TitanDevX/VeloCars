@@ -40,6 +40,7 @@ class CarFactory extends Factory
             'type' => $sample['type'],
             'used' => $sample['used'],
             'for_rent' => $sample['for_rent'],
+            'listed' => true,
         ];
     }
 }
