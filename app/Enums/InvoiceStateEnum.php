@@ -2,11 +2,11 @@
 
 namespace App\Enums;
 
-enum InvoiceStateEnum: int
+enum InvoiceStateEnum: string
 {
-    case WAITING = 1;
-    case OVERDUE = 2;
-    case PAID = 3;
+    case WAITING = 'WAITING';
+    case OVERDUE = 'OVERDUE';
+    case PAID = 'PAID';
 
     public static function fromName($name)
     {

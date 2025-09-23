@@ -2,11 +2,11 @@
 
 namespace App\Enums;
 
-enum InstallmentStateEnum: int
+enum InstallmentStateEnum: string
 {
-    case WAITING = 1;
-    case ACTIVE = 2;
-    case DEFAULT = 3;
+    case WAITING = 'WAITING';
+    case ACTIVE = 'ACTIVE';
+    case DEFAULT = 'DEFAULT';
 
     public static function fromName($name)
     {

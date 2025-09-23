@@ -2,14 +2,14 @@
 
 namespace App\Enums;
 
-enum UserNotifSubEnum: int
+enum UserNotifSubEnum: string
 {
-    case RENTAL = 1;
-    case ALL = 2;
-    case SELL = 3;
-    case DISCOUNT = 4;
+    case RENTAL = 'RENTAL';
+    case ALL = 'ALL';
+    case SELL = 'SELL';
+    case DISCOUNT = 'DISCOUNT';
 
-    case NEW_BRANCH = 5;
+    case NEW_BRANCH = 'NEW_BRANCH';
 
 
     public static function fromName($name)

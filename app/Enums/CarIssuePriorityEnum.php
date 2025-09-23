@@ -2,12 +2,12 @@
 
 namespace App\Enums;
 
-enum CarIssuePriorityEnum: int
+enum CarIssuePriorityEnum: string
 {
-    case LOW = 1;
-    case NORMAL = 2;
-    case HIGH = 3;
-    case CRITICAL = 4;
+    case LOW = 'LOW';
+    case NORMAL = 'NORMAL';
+    case HIGH = 'HIGH';
+    case CRITICAL = 'CRITICAL';
 
     public static function fromName($name)
     {

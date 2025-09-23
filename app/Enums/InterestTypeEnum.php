@@ -2,12 +2,12 @@
 
 namespace App\Enums;
 
-enum InterestTypeEnum: int
+enum InterestTypeEnum: string
 {
-    case PER_YEAR_AMOUNT = 1;
-    case PER_YEAR_PERCENT = 1;
-    case FIXED_PERCENT = 2;
-    case FIXED_AMOUNT = 3;
+    case PER_YEAR_AMOUNT = 'PER_YEAR_AMOUNT';
+    case PER_YEAR_PERCENT = 'PER_YEAR_PERCENT';
+    case FIXED_PERCENT = 'FIXED_PERCENT';
+    case FIXED_AMOUNT = 'FIXED_AMOUNT';
 
     public static function fromName($name)
     {

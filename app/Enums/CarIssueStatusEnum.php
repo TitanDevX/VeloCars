@@ -2,11 +2,11 @@
 
 namespace App\Enums;
 
-enum CarIssueStatusEnum: int
+enum CarIssueStatusEnum: string
 {
-    case UNTOUCHED = 1;
-    case FIXING = 2;
-    case FIXED = 3;
+    case UNTOUCHED = 'UNTOUCHED';
+    case FIXING = 'FIXING';
+    case FIXED = 'FIXED';
 
     public static function fromName($name)
     {
