@@ -13,7 +13,7 @@ class BranchPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can('branch.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class BranchPolicy
      */
     public function view(User $user, Branch $branch): bool
     {
-        return false;
+        return $user->can('branch.view');
     }
 
     /**
@@ -29,7 +29,7 @@ class BranchPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+       return $user->can(abilities: 'branch.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class BranchPolicy
      */
     public function update(User $user, Branch $branch): bool
     {
-        return false;
+        return $user->can(abilities: 'branch.update');
     }
 
     /**
@@ -45,22 +45,8 @@ class BranchPolicy
      */
     public function delete(User $user, Branch $branch): bool
     {
-        return false;
+        return $user->can('branch.delete');
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Branch $branch): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Branch $branch): bool
-    {
-        return false;
-    }
+    
 }

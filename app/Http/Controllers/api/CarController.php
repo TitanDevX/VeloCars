@@ -7,8 +7,11 @@ use App\Http\Requests\StoreCarRequest;
 use App\Http\Requests\UpdateCarRequest;
 use App\Http\Resources\CarResource;
 use App\Models\Car;
+use App\Models\User;
 use App\Services\CarService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Spatie\Permission\Models\Role;
 
 class CarController extends Controller
 {
@@ -21,6 +24,7 @@ class CarController extends Controller
      */
     public function index()
     {
+       
         $cars = $this->carService->all(request()->all(), ['details', 'soldTo']);
 
         return $this->res(CarResource::collection($cars));
@@ -37,6 +41,7 @@ class CarController extends Controller
      */
     public function store(StoreCarRequest $request)
     {
+        Gate::authorize('create', Car::class);
         $data = $request->validated();
 
         $car = $this->carService->createCar($data);
@@ -50,7 +55,9 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
+       
         $car = $this->carService->getCar($id);
+         Gate::authorize('view', $car);
         return $this->res(CarResource::make($car));
     }
 
@@ -61,6 +68,7 @@ class CarController extends Controller
     {
         $data = $request->validated();
 
+         Gate::authorize('update', $car);
         $this->carService->updateCar($car,$data);
         return $this->res(CarResource::make($car));
     }
@@ -71,6 +79,7 @@ class CarController extends Controller
     public function destroy(string $id)
     {
          $car = $this->carService->getCar($id);
+          Gate::authorize('delete', $car);
          if(!$car){
             return $this->res([],'Car not found',404,false);
          }

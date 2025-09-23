@@ -13,7 +13,7 @@ class InvoicePolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can('invoice.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class InvoicePolicy
      */
     public function view(User $user, Invoice $invoice): bool
     {
-        return false;
+        return $user->can("invoice.view") || ($user->can("invoice.own.view") && $invoice->user_id === $user->id);
     }
 
     /**
@@ -29,7 +29,7 @@ class InvoicePolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can('invoice.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class InvoicePolicy
      */
     public function update(User $user, Invoice $invoice): bool
     {
-        return false;
+        return $user->can('invoice.update');
     }
 
     /**
@@ -45,22 +45,8 @@ class InvoicePolicy
      */
     public function delete(User $user, Invoice $invoice): bool
     {
-        return false;
+        return $user->can('invoice.delete');
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, Invoice $invoice): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, Invoice $invoice): bool
-    {
-        return false;
-    }
+   
 }

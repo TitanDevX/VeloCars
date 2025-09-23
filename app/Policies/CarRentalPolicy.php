@@ -13,7 +13,7 @@ class CarRentalPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can('rental.index');
     }
 
     /**
@@ -21,15 +21,16 @@ class CarRentalPolicy
      */
     public function view(User $user, CarRental $carRental): bool
     {
-        return false;
+        return $user->can('rental.view') || $carRental->renter_id == $user->id;
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user, ?User $targetUser): bool
     {
-        return false;
+         return $user->can('rental.create') 
+         || ($targetUser && $targetUser->id == $user->id && $user->can('rental.own.create'));
     }
 
     /**
@@ -37,7 +38,7 @@ class CarRentalPolicy
      */
     public function update(User $user, CarRental $carRental): bool
     {
-        return false;
+        return $user->can('rental.update');
     }
 
     /**
@@ -45,22 +46,8 @@ class CarRentalPolicy
      */
     public function delete(User $user, CarRental $carRental): bool
     {
-        return false;
+        return $user->can('rental.delete');
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, CarRental $carRental): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, CarRental $carRental): bool
-    {
-        return false;
-    }
+    
 }

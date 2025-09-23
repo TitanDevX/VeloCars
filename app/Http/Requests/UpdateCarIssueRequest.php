@@ -2,7 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Enums\CarIssuePriorityEnum;
+use App\Enums\CarIssueStatusEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCarIssueRequest extends FormRequest
 {
@@ -11,7 +14,7 @@ class UpdateCarIssueRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +25,12 @@ class UpdateCarIssueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => [ 'string', 'max:40'],
+            'details' => ['string'],
+            'priority' => [Rule::enum(CarIssuePriorityEnum::class)],
+            'fixer_id' => ['exists:users,id'],
+            'state' => [Rule::enum(CarIssueStatusEnum::class)],
+
         ];
     }
 }

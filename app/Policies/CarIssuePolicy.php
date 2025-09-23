@@ -13,7 +13,7 @@ class CarIssuePolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+          return $user->can('carissue.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class CarIssuePolicy
      */
     public function view(User $user, CarIssue $carIssue): bool
     {
-        return false;
+        return $user->can('carissue.view');
     }
 
     /**
@@ -29,7 +29,7 @@ class CarIssuePolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can('carissue.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class CarIssuePolicy
      */
     public function update(User $user, CarIssue $carIssue): bool
     {
-        return false;
+        return $user->can('carissue.update');
     }
 
     /**
@@ -45,22 +45,8 @@ class CarIssuePolicy
      */
     public function delete(User $user, CarIssue $carIssue): bool
     {
-        return false;
+       return $user->can('carissue.delete');
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, CarIssue $carIssue): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, CarIssue $carIssue): bool
-    {
-        return false;
-    }
+  
 }

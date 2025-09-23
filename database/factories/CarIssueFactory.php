@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Enums\CarIssuePriorityEnum;
+use App\Enums\CarIssueStatusEnum;
 use File;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -31,7 +32,7 @@ class CarIssueFactory extends Factory
             'title'    => $sample['title'],
             'priority' => CarIssuePriorityEnum::fromName($sample['priority']),
             'details'  => $sample['details'],
-            'state' => $this->faker->numberBetween(1,3)
+            'state' => $this->faker->randomElement(CarIssueStatusEnum::cases())
         ];
     }
 }

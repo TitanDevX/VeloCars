@@ -22,21 +22,19 @@ return [
       'userinstallment.view',
       'userinstallment.delete',
       'userinstallment.create',
-      'userinstallment.view',
       'userinstallment.index',
       'userinstallment.alerts',
 
-      'rental.view',
+      'rental.index',
       'rental.delete',
       'rental.create',
       'rental.view',
-      'rental.index',
       'rental.alerts',
 
       'statistics.view',
 
       'car.update',
-
+      'car.update.price', # Update price & rent.
       'invoice.index',
       'invoice.view',
       'invoice.create',
@@ -50,13 +48,15 @@ return [
     ],
     'technician' => [
       'inherit' => 'user',
-      'car.info.update', # Update everything about a car but things related to buy & rent.
+      'car.update', 
       'cardetail.create',
       'cardetail.update',
+      'carissue.index',
       'carissue.create',
       'carissue.delete',
       'carissue.view',
       'carissue.update',
+      'carissuetemplate.index',
       'carissuetemplate.view',
       'carissuetemplate.create',
       'carissuetemplate.delete',
@@ -82,12 +82,6 @@ return [
 
 
   ],
-  'mappings' =>
-    [
-      'c' => 'create',
-      'r' => 'reterive',
-      'u' => 'update',
-      'd' => 'delete',
-    ]
+ 
 ];
 

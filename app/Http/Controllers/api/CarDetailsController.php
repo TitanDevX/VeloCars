@@ -9,6 +9,7 @@ use App\Http\Resources\CarDetailsResource;
 use App\Models\Car;
 use App\Models\CarDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class CarDetailsController extends Controller
 {
@@ -18,6 +19,7 @@ class CarDetailsController extends Controller
      */
     public function store(StoreCarDetailRequest $request, Car $car)
     {
+        Gate::authorize('create', CarDetail::class);
         $car->loadMissing('details');
         if ($car->details()->exists()) {
             return $this->res([], 'error', 400, false, ['This car already has details set, update it instead.'], 'ALREADY_HAS');
@@ -33,7 +35,8 @@ class CarDetailsController extends Controller
 
     public function show(Car $car)
     {
-       
+         Gate::authorize('view', CarDetail::class);
+        
         $details = $car->details;
         if (!$details) {
             return $this->res();
@@ -46,6 +49,8 @@ class CarDetailsController extends Controller
      */
     public function update(UpdateCarDetailRequest $request, Car $car)
     {
+         Gate::authorize('update', CarDetail::class);
+        
         $car->loadMissing('details');
         $data = $request->validated();
         if (!$car->details()->exists()) {
@@ -61,6 +66,8 @@ class CarDetailsController extends Controller
      */
     public function destroy(Car $car)
     {
+         Gate::authorize('delete', CarDetail::class);
+        
         $car->loadMissing('details');
         if (!$car->details()->exists()) {
             return $this->res();

@@ -13,7 +13,7 @@ class InstallmentPlanPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can('installmentplan.index');
     }
 
     /**
@@ -21,7 +21,7 @@ class InstallmentPlanPolicy
      */
     public function view(User $user, InstallmentPlan $installmentPlan): bool
     {
-        return false;
+        return $user->can('installmentplan.view');
     }
 
     /**
@@ -29,7 +29,7 @@ class InstallmentPlanPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return $user->can('installmentplan.create');
     }
 
     /**
@@ -37,7 +37,7 @@ class InstallmentPlanPolicy
      */
     public function update(User $user, InstallmentPlan $installmentPlan): bool
     {
-        return false;
+        return $user->can('installmentplan.update');
     }
 
     /**
@@ -45,22 +45,8 @@ class InstallmentPlanPolicy
      */
     public function delete(User $user, InstallmentPlan $installmentPlan): bool
     {
-        return false;
+        return $user->can('installmentplan.delete');
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, InstallmentPlan $installmentPlan): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, InstallmentPlan $installmentPlan): bool
-    {
-        return false;
-    }
+    
 }

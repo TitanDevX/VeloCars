@@ -29,8 +29,9 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+        $user->assignRole('admin');
         UserNoficationSubscription::factory()->for($user)->create([
-            'type' => 2
+            'type' => 'ALL'
         ]);
         $branch = Branch::factory()->create();
         $oneCar = Car::factory()->for($branch, 'branch')->has(CarDetail::factory(), 'details')->create();

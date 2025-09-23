@@ -13,7 +13,7 @@ class UserInstallmentPolicy
      */
     public function viewAny(User $user): bool
     {
-        return false;
+        return $user->can('userinstallment.view');
     }
 
     /**
@@ -21,15 +21,16 @@ class UserInstallmentPolicy
      */
     public function view(User $user, UserInstallment $userInstallment): bool
     {
-        return false;
+        return $user->can('userinstallment.view') || ($user->can('userinstallment.own.view') && $userInstallment->user_id == $user->id);
     }
 
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user, ?User $targetUser): bool
     {
-        return false;
+        return $user->can('userinstallment.create') ||
+         ($targetUser && $targetUser->id == $user->id && $user->can('userinstallment.own.create'));
     }
 
     /**
@@ -37,7 +38,7 @@ class UserInstallmentPolicy
      */
     public function update(User $user, UserInstallment $userInstallment): bool
     {
-        return false;
+        return $user->can('userinstallment.update');
     }
 
     /**
@@ -45,22 +46,7 @@ class UserInstallmentPolicy
      */
     public function delete(User $user, UserInstallment $userInstallment): bool
     {
-        return false;
+         return $user->can('userinstallment.delete');
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
-    public function restore(User $user, UserInstallment $userInstallment): bool
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
-    public function forceDelete(User $user, UserInstallment $userInstallment): bool
-    {
-        return false;
-    }
 }
